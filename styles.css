@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
+:root {
+  --fretboard-height: 300;
+  --number-of-strings: 6;
+  --string-height: 10;
+  --half-string-height: calc(var(--string-height) / 2);
+  --string-top-position: calc(var(--fretboard-height) / var(--number-of-strings) / 2 - var(--half-string-height));
+  --double-fretmark-position-1: calc(var(--fretboard-height) * 0.25);
+  --double-fretmark-position-2: calc(var(--fretboard-height) * 0.75);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -15,7 +25,7 @@ body {
   flex-direction: column;
   background: #e9cf81;
   width: 100%;
-  height: 300px;
+  height: calc(var(--fretboard-height) * 1px);
   margin-top: 50px;
 }
 
@@ -28,12 +38,12 @@ body {
 .string::before {
   content: '';
   width: 100%;
-  height: 10px;
+  height: calc(var(--string-height) * 1px);
   background: linear-gradient(#eee, #999);
   box-shadow: 76px 3px 10px #6e623d;
   z-index: 1;
   position: absolute;
-  top: 22px;
+  top: calc(var(--string-top-position) * 1px);
 }
 
 .note-fret {
@@ -73,7 +83,7 @@ body {
   width: 20px;
   border-radius: 50%;
   background: #808080;
-  top: 150px;
+  top: calc(var(--fretboard-height) / 2 * 1px);
   transform: translate(0, -50%);
 }
 
@@ -84,8 +94,8 @@ body {
   width: 20px;
   border-radius: 50%;
   background: #808080;
-  top: 58px;
-  transform: translate(-140%, 50%);
+  top: calc(var(--double-fretmark-position-1) * 1px);
+  transform: translate(-140%, -50%);
 }
 .double-fretmark::after {
   content: "";
@@ -94,6 +104,6 @@ body {
   width: 20px;
   border-radius: 50%;
   background: #808080;
-  top: 208px;
-  transform: translate(-140%, 50%);
+  top: calc(var(--double-fretmark-position-2) * 1px);
+  transform: translate(-140%, -50%);
 }
