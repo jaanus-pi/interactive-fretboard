@@ -76,34 +76,25 @@ body {
   opacity: 0.2;
 }
 
-.single-fretmark::after {
+.single-fretmark::after, .double-fretmark::before, .double-fretmark::after {
   content: "";
   position: absolute;
   height: 20px;
   width: 20px;
   border-radius: 50%;
   background: #808080;
+}
+
+.single-fretmark::after {
   top: calc(var(--fretboard-height) / 2 * 1px);
   transform: translate(0, -50%);
 }
 
 .double-fretmark::before {
-  content: "";
-  position: absolute;
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-  background: #808080;
   top: calc(var(--double-fretmark-position-1) * 1px);
   transform: translate(-140%, -50%);
 }
 .double-fretmark::after {
-  content: "";
-  position: absolute;
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-  background: #808080;
   top: calc(var(--double-fretmark-position-2) * 1px);
   transform: translate(-140%, -50%);
 }
