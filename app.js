@@ -16,6 +16,7 @@ const guitarTuning = [4, 11, 7, 2, 9, 4];
 const app = {
   init() {
     this.setupFretboard();
+    this.setupEventListeners();
   },
   setupFretboard() {
     root.style.setProperty('--number-of-strings', numberOfStrings);
@@ -56,6 +57,16 @@ const app = {
       noteName = notesSharp[noteIndex];
     }
     return noteName;
+  },
+  setupEventListeners() {
+    fretboard.addEventListener('mouseover', (event) => {
+      if (event.target.classList.contains('note-fret')) {
+        event.target.style.setProperty('--noteDotOpacity', 1);
+      }
+    });
+    fretboard.addEventListener('mouseout', (event) => {
+      event.target.style.setProperty('--noteDotOpacity', 0);
+    })
   }
 }
 

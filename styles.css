@@ -8,6 +8,7 @@
   --string-top-position: calc(var(--fretboard-height) / var(--number-of-strings) / 2 - var(--half-string-height));
   --double-fretmark-position-1: calc(var(--fretboard-height) * 0.25);
   --double-fretmark-position-2: calc(var(--fretboard-height) * 0.75);
+  --noteDotOpacity: 0;
 }
 
 * {
@@ -74,7 +75,7 @@ body {
   background: teal;
   z-index: 2;
   color: #eee;
-  opacity: 1;
+  opacity: var(--noteDotOpacity);
 }
 
 .single-fretmark::after, .double-fretmark::before, .double-fretmark::after {
