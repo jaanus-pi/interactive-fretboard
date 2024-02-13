@@ -10,12 +10,16 @@
   <div class="settings">
     <label for="instrument-selector">Selected instrument:</label>
     <select name="instrument-selector" id="instrument-selector"></select>
+
     <div class="accidental-selector">
       <input type="radio" class="acc-select" id="flats" name="accidentals" value="flats" checked>
       <label for="flats">♭</label>
       <input type="radio" class="acc-select" id="sharps" name="accidentals" value="sharps">
       <label for="sharps">♯</label>
     </div>
+
+    <label for="number-of-frets">Number of frets:</label>
+    <input type="number" id="number-of-frets" min="5" max="30" value="12">
   </div>
   <div class="fretboard">
   </div>
