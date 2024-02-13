@@ -29,6 +29,10 @@ body {
   background: #282828;
 }
 
+.accidental-selector {
+  margin-left: 20px;
+}
+
 .fretboard {
   display: flex;
   flex-direction: column;
