@@ -25,6 +25,7 @@ body {
   flex-direction: column;
   background: #e9cf81;
   width: 100%;
+  min-width: 1500px;
   height: calc(var(--fretboard-height) * 1px);
   margin-top: 50px;
 }
@@ -64,7 +65,7 @@ body {
   border-image: linear-gradient(to left, #bbb, #fff, #bbb) 1 100%;
 }
 .note-fret::before {
-  content: 'C';
+  content: attr(data-note);
   width: 33px;
   height: 33px;
   border-radius: 50%;
@@ -73,7 +74,7 @@ body {
   background: teal;
   z-index: 2;
   color: #eee;
-  opacity: 0.2;
+  opacity: 1;
 }
 
 .single-fretmark::after, .double-fretmark::before, .double-fretmark::after {
