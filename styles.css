@@ -21,6 +21,14 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+.settings {
+  display: flex;
+  color: white;
+  padding: 20px;
+  border-bottom: 1px solid #444;
+  background: #282828;
+}
+
 .fretboard {
   display: flex;
   flex-direction: column;
