@@ -3,3 +3,5 @@
 
  This project is based on a tutorial series from https://www.youtube.com/@MusicandCoding,
  be sure to check him out!
+
+ Live app can be seen here: https://jaanus-pi.github.io/interactive-fretboard/
