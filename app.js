@@ -32,9 +32,9 @@ let numberOfStrings = instrumentTuningPresets[selectedInstrument].length;
 const app = {
   init() {
     this.setupFretboard();
+    handlers.setupEventListeners();
     this.setupinstrumentSelector();
     this.setupNoteNameSection();
-    handlers.setupEventListeners();
   },
   setupFretboard() {
     fretboard.innerHTML = '';
