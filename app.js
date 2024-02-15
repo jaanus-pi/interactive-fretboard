@@ -48,6 +48,9 @@ const app = {
       for (let fret = 0; fret <= numberOfFrets; fret++) {
         let noteFret = tools.createElement('div');
         noteFret.classList.add('note-fret');
+        if (fret !=0) {
+          noteFret.style.setProperty('flex', (1*Math.pow(0.944,(fret))));
+        }
         string.appendChild(noteFret);
         let noteName = this.generateNoteNames((fret + instrumentTuningPresets[selectedInstrument][i]));
         noteFret.setAttribute('data-note', noteName);
