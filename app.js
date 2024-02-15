@@ -16,13 +16,15 @@ const notesSharp = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", 
 let accidentals = 'sharps';
 
 const instrumentTuningPresets = {
-  'Guitar': [4, 11, 7, 2, 9, 4],
+  'Guitar (6 strings)': [4, 11, 7, 2, 9, 4],
+  'Guitar (7 strings)': [4, 11, 7, 2, 9, 4, 11],
+  'Guitar (8 strings)': [4, 11, 7, 2, 9, 4, 11, 6],
   'Bass (4 strings)': [7, 2, 9, 4],
   'Bass (5 strings)': [7, 2, 9, 4, 11],
   'Ukulele': [9, 4, 0, 7]
 };
 
-let selectedInstrument = 'Guitar';
+let selectedInstrument = 'Guitar (6 strings)';
 
 let numberOfStrings = instrumentTuningPresets[selectedInstrument].length;
 
