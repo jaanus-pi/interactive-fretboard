@@ -53,6 +53,7 @@ label {
   display: flex;
   position: relative;
 }
+
 .string::before {
   content: '';
   width: 100%;
@@ -73,6 +74,7 @@ label {
   align-items: center;
   position: relative;
 }
+
 .note-fret:first-child {
   background: black;
   min-width: 76px;
@@ -81,6 +83,7 @@ label {
   flex-shrink: 0;
   border-image: linear-gradient(to left, #bbb, #fff, #bbb) 1 100%;
 }
+
 .note-fret::before {
   content: attr(data-note);
   width: 33px;
@@ -112,6 +115,7 @@ label {
   top: calc(var(--double-fretmark-position-1) * 1px);
   transform: translate(-140%, -50%);
 }
+
 .double-fretmark::after {
   top: calc(var(--double-fretmark-position-2) * 1px);
   transform: translate(-140%, -50%);
