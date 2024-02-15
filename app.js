@@ -6,6 +6,7 @@ const accidentalSelector = document.querySelector('.accidental-selector');
 const numberOfFretsSelector = document.querySelector('#number-of-frets');
 const showAllNotesSelector = document.querySelector('#show-all-notes');
 const showMultipleNotesSelector = document.querySelector('#show-multiple-notes');
+const noteNameSection = document.querySelector('.note-name-section');
 
 let allNotes;
 let showMultipleNotes = false;
@@ -37,6 +38,7 @@ const app = {
   init() {
     this.setupFretboard();
     this.setupSelectedInstrumentSelector();
+    this.setupNoteNameSection();
     this.setupEventListeners();
   },
   setupFretboard() {
@@ -87,6 +89,19 @@ const app = {
       selectedInstrumentSelector.appendChild(instrumentOption);
     }
   },
+  setupNoteNameSection() {
+    noteNameSection.innerHTML = '';
+    let noteNames;
+    if (accidentals === 'flats') {
+      noteNames = notesFlat;
+    } else {
+      noteNames = notesSharp;
+    }
+    noteNames.forEach((noteName) => {
+      let noteNameElement = tools.createElement('span', noteName);
+      noteNameSection.appendChild(noteNameElement);
+    });
+  },
   showNoteDot(event) {
     if (event.target.classList.contains('note-fret')) {
       if (showMultipleNotes) {
@@ -114,7 +129,8 @@ const app = {
     accidentalSelector.addEventListener('click', (event) => {
       if (event.target.classList.contains('acc-select')) {
         accidentals = event.target.value;
-        this.setupFretboard()
+        this.setupFretboard();
+        this.setupNoteNameSection();
       } else {
         return;
       }
@@ -139,6 +155,18 @@ const app = {
     showMultipleNotesSelector.addEventListener('change', () => {
       showMultipleNotes = !showMultipleNotes;
     }); 
+    noteNameSection.addEventListener('mouseover', (event) => {
+      let noteToShow = event.target.innerText;
+      app.toggleMultipleNotes(noteToShow, 1);
+    });
+    noteNameSection.addEventListener('mouseout', (event) => {
+      if (!showAllNotesSelector.checked) {
+        let noteToShow = event.target.innerText;
+        app.toggleMultipleNotes(noteToShow, 0);
+      } else {
+        return;
+      }
+    });
   },
   toggleMultipleNotes(noteName, opacity) {
     for (let i = 0; i < allNotes.length; i++) {
