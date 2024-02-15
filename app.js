@@ -5,6 +5,10 @@ const selectedInstrumentSelector = document.querySelector('#instrument-selector'
 const accidentalSelector = document.querySelector('.accidental-selector');
 const numberOfFretsSelector = document.querySelector('#number-of-frets');
 const showAllNotesSelector = document.querySelector('#show-all-notes');
+const showMultipleNotesSelector = document.querySelector('#show-multiple-notes');
+
+let allNotes;
+let showMultipleNotes = false;
 
 let numberOfFrets = numberOfFretsSelector.value;
 
@@ -65,6 +69,7 @@ const app = {
         }
       }
     }
+    allNotes = document.querySelectorAll('.note-fret');
   },
   generateNoteNames(noteIndex) {
     noteIndex = noteIndex % 12;
@@ -84,11 +89,19 @@ const app = {
   },
   showNoteDot(event) {
     if (event.target.classList.contains('note-fret')) {
-      event.target.style.setProperty('--noteDotOpacity', 1);
+      if (showMultipleNotes) {
+        app.toggleMultipleNotes(event.target.dataset.note, 1);
+      } else {
+        event.target.style.setProperty('--noteDotOpacity', 1);
+      }
     }
   },
   hideNoteDot(event) {
-    event.target.style.setProperty('--noteDotOpacity', 0);
+    if (showMultipleNotes) {
+      app.toggleMultipleNotes(event.target.dataset.note, 0);
+    } else {
+      event.target.style.setProperty('--noteDotOpacity', 0);
+    }
   },
   setupEventListeners() {
     fretboard.addEventListener('mouseover', this.showNoteDot);
@@ -123,6 +136,16 @@ const app = {
         this.setupFretboard();
       }
     });
+    showMultipleNotesSelector.addEventListener('change', () => {
+      showMultipleNotes = !showMultipleNotes;
+    }); 
+  },
+  toggleMultipleNotes(noteName, opacity) {
+    for (let i = 0; i < allNotes.length; i++) {
+      if (allNotes[i].dataset.note === noteName) {
+        allNotes[i].style.setProperty('--noteDotOpacity', opacity);
+      }
+    }
   }
 }
 
